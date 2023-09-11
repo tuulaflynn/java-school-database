@@ -1,10 +1,15 @@
--- DROP DATABASE IF EXISTS school;
+--DROP DATABASE IF EXISTS school;
 
--- create database school;
--- use school;
+--create database school;
+--use school;
+
+-- Drop all tables and other objects in the 'school' schema
+DROP SCHEMA IF EXISTS school CASCADE;
+
+-- Create the 'school' schema
+CREATE SCHEMA IF NOT EXISTS school;
 
 -- Table structure for student
-
 DROP TABLE IF EXISTS student;
 CREATE TABLE student (
   sid int AUTO_INCREMENT PRIMARY KEY,

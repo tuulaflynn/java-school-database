@@ -6,6 +6,15 @@ public class Teacher {
     private String teacherLName;
     private String dept;
 
+    public Teacher(int teacherId, String teacherFName, String teacherLName, String dept) {
+        this.teacherId = teacherId;
+        this.teacherFName = teacherFName;
+        this.teacherLName = teacherLName;
+        this.dept = dept;
+    }
+
+    public Teacher() {}
+
     public int getTeacherId() {
         return teacherId;
     }
