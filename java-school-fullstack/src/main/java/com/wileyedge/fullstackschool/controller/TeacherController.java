@@ -1,9 +1,14 @@
 package com.wileyedge.fullstackschool.controller;
 
+import com.wileyedge.fullstackschool.exceptions.InvalidTeacherId;
 import com.wileyedge.fullstackschool.model.Teacher;
 import com.wileyedge.fullstackschool.service.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+
 import java.util.List;
 
 @RestController
@@ -15,47 +20,42 @@ public class TeacherController {
     TeacherServiceImpl teacherServiceImpl;
 
     @GetMapping("/teachers")
-    public List<Teacher> getAllTeachers() {
+    public ResponseEntity<List<Teacher>> getAllTeachers() {
         //YOUR CODE STARTS HERE
-
-        return null;
-
+        return new ResponseEntity<List<Teacher>>(teacherServiceImpl.getAllTeachers(), HttpStatus.OK);
         //YOUR CODE ENDS HERE
     }
 
     @GetMapping("/{id}")
-    public Teacher getTeacherById(@PathVariable int id) {
+    public ResponseEntity<Teacher> getTeacherById(@PathVariable int id) {
         //YOUR CODE STARTS HERE
-
-        return null;
-
+        return new ResponseEntity<Teacher>(teacherServiceImpl.getTeacherById(id), HttpStatus.OK);
         //YOUR CODE ENDS HERE
     }
 
     @PostMapping("/add")
-    public Teacher addTeacher(@RequestBody Teacher teacher) {
+    public ResponseEntity<Teacher> addTeacher(@RequestBody Teacher teacher) {
         //YOUR CODE STARTS HERE
-
-        return null;
-
+        return new ResponseEntity<Teacher>(teacherServiceImpl.addNewTeacher(teacher), HttpStatus.OK);
         //YOUR CODE ENDS HERE
     }
 
     @PutMapping("/{id}")
     public Teacher updateTeacher(@PathVariable int id, @RequestBody Teacher teacher) {
         //YOUR CODE STARTS HERE
-
-        return null;
-
+        return teacherServiceImpl.updateTeacherData(id, teacher);
         //YOUR CODE ENDS HERE
     }
 
     @DeleteMapping("/{id}")
     public void deleteTeacher(@PathVariable int id) {
         //YOUR CODE STARTS HERE
-
-
-
+        teacherServiceImpl.deleteTeacherById(id);
         //YOUR CODE ENDS HERE
     }
+
+
+
+
+
 }
