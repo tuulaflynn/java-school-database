@@ -58,7 +58,7 @@ public class StudentDaoImplTests {
         student.setStudentId(1);
         student.setStudentFirstName("William");
         student.setStudentLastName("Gates");
-        studentDao.updateStudent(student);
+        studentDao.updateStudent(student.getStudentId(), student);
         List<Student> newList = studentDao.getAllStudents();
         assertNotNull(newList);
         int i = 0;
