@@ -41,9 +41,10 @@ public class studentDaoStubImpl implements StudentDao {
     }
 
     @Override
-    public void updateStudent(Student student) {
+    public Student updateStudent(int id, Student student) {
             onlyStudent.setStudentFirstName(student.getStudentFirstName());
             onlyStudent.setStudentLastName(student.getStudentLastName());
+        return student;
     }
 
     @Override

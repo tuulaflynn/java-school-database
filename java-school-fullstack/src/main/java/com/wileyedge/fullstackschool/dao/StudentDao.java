@@ -12,7 +12,7 @@ public interface StudentDao {
 
     Student findStudentById(int id);
 
-    void updateStudent(Student student);
+    Student updateStudent(int id, Student student);
 
     void deleteStudent(int id);
 
