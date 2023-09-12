@@ -27,12 +27,10 @@ public class StudentDaoImpl implements StudentDao {
     public Student createNewStudent(Student student) {
         //YOUR CODE STARTS HERE
         String query = "INSERT INTO student(FName, LName) VALUES (?, ?)";
-        int rowsAffected = jdbcTemplate.update(query, student.getStudentFirstName(), student.getStudentLastName());
+        jdbcTemplate.update(query, student.getStudentFirstName(), student.getStudentLastName());
 
-        // Add logic to retrieve the generated student ID and set it in the 'student' object
-        //String queryForId = "SELECT LAST_INSERT_ID();"; For MySql
-        String queryForId = "SELECT LAST_INSERT_ID()"; // For H2 database
-
+        // Use the H2-specific function to get the last inserted ID
+        String queryForId = "SELECT IDENTITY()";
         int generatedId = jdbcTemplate.queryForObject(queryForId, Integer.class);
         student.setStudentId(generatedId);
         return student;
