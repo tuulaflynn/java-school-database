@@ -43,10 +43,16 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         //YOUR CODE STARTS HERE
         if (teacher.getTeacherFName().equals("")) {
             teacher.setTeacherFName("First Name blank, teacher NOT added");
+            if (teacher.getTeacherLName().equals("") ) {
+                teacher.setTeacherLName("Last Name blank, teacher NOT added");
+            }
             return teacher;
         }
-        if (teacher.getTeacherLName().equals("")) {
-            teacher.setTeacherFName("Last Name blank, teacher NOT added");
+        if (teacher.getTeacherLName().equals("") ) {
+            teacher.setTeacherLName("Last Name blank, teacher NOT added");
+            if (teacher.getTeacherFName().equals("")) {
+                teacher.setTeacherFName("First Name blank, teacher NOT added");
+            }
             return teacher;
         }
 
