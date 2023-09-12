@@ -4,10 +4,10 @@
 --use school;
 
 -- Drop all tables and other objects in the 'school' schema
-DROP SCHEMA IF EXISTS school CASCADE;
+--DROP SCHEMA IF EXISTS school CASCADE;
 
 -- Create the 'school' schema
-CREATE SCHEMA IF NOT EXISTS school;
+--CREATE SCHEMA IF NOT EXISTS school;
 
 -- Table structure for student
 DROP TABLE IF EXISTS student;
