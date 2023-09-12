@@ -32,8 +32,8 @@ public class CourseDaoStubImpl implements CourseDao {
 
     @Override
     public Course createNewCourse(Course course) {
-        if(course.getCourseName().toString() == "" ||
-                course.getCourseDesc().toString() == ""){
+        if(course.getCourseName().equals("") ||
+                course.getCourseDesc().equals("")){
             course.setCourseName("Name blank, course NOT added");
             course.setCourseDesc("Description blank, course NOT added");
         }

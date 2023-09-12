@@ -4,6 +4,8 @@ import com.wileyedge.fullstackschool.dao.CourseDao;
 import com.wileyedge.fullstackschool.model.Course;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
