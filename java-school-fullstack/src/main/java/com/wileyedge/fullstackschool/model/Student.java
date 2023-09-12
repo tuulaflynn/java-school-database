@@ -5,6 +5,14 @@ public class Student {
     private String studentFirstName;
     private String studentLastName;
 
+    public Student(int studentId, String studentFirstName, String studentLastName) {
+        this.studentId = studentId;
+        this.studentFirstName = studentFirstName;
+        this.studentLastName = studentLastName;
+    }
+
+    public Student() {}
+
     public int getStudentId() {
         return studentId;
     }

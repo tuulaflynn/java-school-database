@@ -3,9 +3,11 @@ package com.wileyedge.fullstackschool.dao;
 import com.wileyedge.fullstackschool.dao.mappers.StudentMapper;
 import com.wileyedge.fullstackschool.exceptions.InvalidStudentId;
 import com.wileyedge.fullstackschool.model.Student;
+import com.wileyedge.fullstackschool.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +17,9 @@ public class StudentDaoImpl implements StudentDao {
 
 
     private final StudentMapper studentMapper = new StudentMapper();
+
+    private final RowMapper<Student> rowMapperLambdaEx = (rs, numRowsAffected) ->
+            new Student(rs.getInt(1), rs.getString(2), rs.getString(3));
 
     @Autowired
     private final JdbcTemplate jdbcTemplate;
@@ -42,7 +47,7 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> getAllStudents() {
         //YOUR CODE STARTS HERE
         String query = "SELECT * FROM student;";
-        List<Student> allStudents = jdbcTemplate.query(query, new StudentMapper());
+        List<Student> allStudents = jdbcTemplate.query(query, rowMapperLambdaEx);
         return allStudents;
         //YOUR CODE ENDS HERE
     }
@@ -54,7 +59,7 @@ public class StudentDaoImpl implements StudentDao {
         String query = "SELECT * FROM student WHERE sid=?";
         Student fetchedStudent = null;
         try {
-            fetchedStudent = jdbcTemplate.queryForObject(query, new StudentMapper(), id);
+            fetchedStudent = jdbcTemplate.queryForObject(query, rowMapperLambdaEx, id);
         } catch (DataAccessException dae) {
             // Handle the exception or throw a custom exception as needed
             // For example, you can throw a custom exception like InvalidStudentId
